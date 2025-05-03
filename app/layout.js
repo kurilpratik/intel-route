@@ -2,10 +2,9 @@
 
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 
 import Navbar from "@/app/components/Navbar";
+import RouteTracker from "@/app/utils/routeTracker";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,25 +23,27 @@ const geistMono = Geist_Mono({
 // };
 
 export default function RootLayout({ children }) {
-  const pathname = usePathname();
-  const [nextRoute, setNextRoute] = useState(null);
+  // Data collection layer - add route logging
 
-  useEffect(() => {
-    const predictNext = async () => {
-      try {
-        const current = pathname.replace("/", "") || "home";
-        const res = await fetch(
-          `http://localhost:8000/predict-next?current=${current}`
-        );
-        const data = await res.json();
-        setNextRoute(data.next);
-      } catch (err) {
-        console.error("Prediction failed:", err);
-      }
-    };
+  // const pathname = usePathname();
+  // const [nextRoute, setNextRoute] = useState(null);
 
-    predictNext();
-  }, [pathname]);
+  // useEffect(() => {
+  //   const predictNext = async () => {
+  //     try {
+  //       const current = pathname.replace("/", "") || "home";
+  //       const res = await fetch(
+  //         `http://localhost:8000/predict-next?current=${current}`
+  //       );
+  //       const data = await res.json();
+  //       setNextRoute(data.next);
+  //     } catch (err) {
+  //       console.error("Prediction failed:", err);
+  //     }
+  //   };
+
+  //   predictNext();
+  // }, [pathname]);
 
   return (
     <html lang="en">
@@ -50,8 +51,9 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-s`}
       >
         <Navbar />
+        <RouteTracker />
         {children}
-        {nextRoute && (
+        {/* {nextRoute && (
           <div
             style={{
               position: "fixed",
@@ -67,7 +69,7 @@ export default function RootLayout({ children }) {
           >
             🔮 Predicted Next Route: <strong>{nextRoute}</strong>
           </div>
-        )}
+        )} */}
       </body>
     </html>
   );

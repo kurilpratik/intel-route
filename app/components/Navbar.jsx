@@ -3,8 +3,8 @@ import Link from "next/link";
 function Navbar() {
   return (
     <nav>
-      <Link href="/">Home</Link> | <Link href="/pages/about">About</Link> |{" "}
-      <Link href="/pages/contact">Contact</Link>
+      <Link href="/">Home</Link> | <Link href="/about">About</Link> |{" "}
+      <Link href="/contact">Contact</Link>
     </nav>
   );
 }
