@@ -2,12 +2,14 @@ import dbConnect from "@/app/lib/mongodb";
 import Visit from "@/app/models/vist.model";
 
 export async function POST(req) {
-  const { path } = await req.json();
-  if (!path) return new Response("Missing path", { status: 400 });
+  const { sessionId, path } = await req.json();
+  if (!sessionId || !path) {
+    return NextResponse.json({ error: "Missing fields" }, { status: 400 });
+  }
 
   try {
     await dbConnect();
-    const visit = new Visit({ route: path });
+    const visit = new Visit({ sessionId, route: path });
     await visit.save();
 
     console.log("Route logged to db:", path);
