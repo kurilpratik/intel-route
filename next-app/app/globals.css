@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 :root {
+  /* Default light theme */
   --background: #ffffff;
   --foreground: #171717;
+  --sidebar: #ffffff;
 }
 
 @theme inline {
@@ -12,15 +14,21 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+/* Change colors to dark if the user prefers dark mode */
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --sidebar: #1a1a1a;
   }
-}
+} */
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
 }

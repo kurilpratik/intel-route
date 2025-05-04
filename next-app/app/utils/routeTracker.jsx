@@ -2,20 +2,32 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getOrCreateSessionId } from "./session";
 import predictNextRoute from "./predictNextRoute";
 
 let routeHistory = [];
 
-export default function RouteTracker() {
+export default function RouteTracker({
+  onNextRoute,
+  onPathNameChange,
+  onSessionId,
+}) {
   const pathname = usePathname();
   const router = useRouter();
+  const [nextRoute, setNextRoute] = useState(null);
+  const [pathName, setPathName] = useState(pathname);
 
   useEffect(() => {
+    // Notify parent about the current pathName
+    if (onPathNameChange) {
+      onPathNameChange(pathname);
+      // Callback so that it cab be used by the parent component (sidebar)
+    }
     // Route logging to MongoDb
     console.log("Route changed:", pathname);
     const sessionId = getOrCreateSessionId();
+
     const logRouteVisit = async () => {
       try {
         await fetch("/api/log-route", {
@@ -43,6 +55,10 @@ export default function RouteTracker() {
           if (nextRoute) {
             router.prefetch(nextRoute);
             console.log("Prefetching next route:", nextRoute);
+            setNextRoute(nextRoute);
+            if (onNextRoute) {
+              onNextRoute(nextRoute); // Making this a callback so that a client component can use a value returned by the server component
+            }
           }
         });
       }
