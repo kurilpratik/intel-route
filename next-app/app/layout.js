@@ -1,10 +1,9 @@
-"use client";
-
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import Navbar from "@/app/components/Navbar";
 import RouteTracker from "@/app/utils/routeTracker";
+import RetrainButton from "@/app/components/RetrainButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,35 +15,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// export const metadata = {
-//   title: "IntelRoute - Intelligent Route Prediction and Prefetching",
-//   description:
-//     "Intelligent Route Prediction and Prefetching using Markov Chains",
-// };
+export const metadata = {
+  title: "IntelRoute - Intelligent Route Prediction and Prefetching",
+  description:
+    "Intelligent Route Prediction and Prefetching using Markov Chains",
+};
 
 export default function RootLayout({ children }) {
-  // Data collection layer - add route logging
-
-  // const pathname = usePathname();
-  // const [nextRoute, setNextRoute] = useState(null);
-
-  // useEffect(() => {
-  //   const predictNext = async () => {
-  //     try {
-  //       const current = pathname.replace("/", "") || "home";
-  //       const res = await fetch(
-  //         `http://localhost:8000/predict-next?current=${current}`
-  //       );
-  //       const data = await res.json();
-  //       setNextRoute(data.next);
-  //     } catch (err) {
-  //       console.error("Prediction failed:", err);
-  //     }
-  //   };
-
-  //   predictNext();
-  // }, [pathname]);
-
   return (
     <html lang="en">
       <body
@@ -53,6 +30,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         <RouteTracker />
         {children}
+        <RetrainButton />
         {/* {nextRoute && (
           <div
             style={{

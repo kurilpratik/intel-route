@@ -2,6 +2,7 @@
 Training a logistic regression model on route log data stored in MongoDB.
 Generates model.joblib and encoder.joblib files.
 """
+from dotenv import load_dotenv
 import os 
 import joblib
 import numpy as np
@@ -12,8 +13,11 @@ from sklearn.model_selection import train_test_split
 
 import pymongo
 
+# Load environment variables from .env file
+load_dotenv()
+
 # configuration
-MONGO_URI = "mongodb+srv://pratikkurilworks:6Opv5ggRPgUC6c6K@cluster0.kf6mgoe.mongodb.net/"
+MONGO_URI = os.getenv("MONGO_URI")
 DB_NAME = "intel-route-db"
 COLLECTION_NAME = "visits"
 MODEL_PATH = "model.joblib"
