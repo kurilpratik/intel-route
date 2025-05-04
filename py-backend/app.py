@@ -4,12 +4,20 @@ Accepts JSON {routes: ["/home", "/about"]} and returns { predicted: "/contact" }
 """
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import uvicorn
 from model import predict_next_route
 
 # FastAPI app instance
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class PredictRequest(BaseModel):
     routes: list[str]
