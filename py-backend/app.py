@@ -5,6 +5,7 @@ Accepts JSON {routes: ["/home", "/about"]} and returns { predicted: "/contact" }
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi import BackgroundTasks
 from pydantic import BaseModel
 import uvicorn
 from model import predict_next_route
@@ -39,6 +40,16 @@ def predict(req: PredictRequest):
         return PredictResponse(predicted=next_route)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/retrain")
+def retrain(background_tasks: BackgroundTasks):
+    """
+    Endpoint to retrain the model in the background.
+    """
+    from train import train
+    # Call the retrain function in the background
+    background_tasks.add_task(train)
+    return {"message": "Model retraining started."}
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0",port=8000)

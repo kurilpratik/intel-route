@@ -1,6 +1,8 @@
 pymongo
 scikit-learn
 joblib
+Fastapi
+uviocrn
 
 ###
 train.py:
