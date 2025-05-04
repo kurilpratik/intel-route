@@ -27,7 +27,13 @@ const Sidebar = ({ className }) => {
       <h3 className="text-gray-600 mt-8">
         Next Predicted Route: <br />
       </h3>
-      <span className="font-bold">{nextRoute || "Loading"}</span>
+      {!nextRoute && (
+        <p className="text-blue-500 text-sm mt-2 w-[50%]">
+          Need at least 2 route changes to predict next route, navigate to
+          another page
+        </p>
+      )}
+      <span className="font-bold">{nextRoute}</span>
 
       <div className="absolute bottom-4 w-[35%]">
         <p className="text-sm text-gray-500 mt-2 mb-4">
