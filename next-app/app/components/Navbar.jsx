@@ -2,7 +2,7 @@ import Link from "next/link";
 
 function Navbar() {
   return (
-    <nav className="flex items-center py-4 pr-4 justify-between">
+    <nav className="sticky top-0 flex items-center py-4 pr-4 justify-between bg-white">
       <Link href="/" className="mr-4">
         <h1 className="text-xl font-bold">🔮IntelRoute</h1>
       </Link>
