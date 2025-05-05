@@ -2,8 +2,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import Navbar from "@/app/components/Navbar";
-import RouteTracker from "@/app/utils/routeTracker";
-import RetrainButton from "@/app/components/RetrainButton";
 import Sidebar from "./components/Sidebar";
 
 const geistSans = Geist({
@@ -17,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "IntelRoute - Intelligent Route Prediction and Prefetching",
+  title: "Intel Route - Intelligent Route Prediction and Prefetching",
   description:
-    "Intelligent Route Prediction and Prefetching using Markov Chains",
+    "Intelligent Route Prediction and Prefetching using Machine Learning Model",
 };
 
 export default function RootLayout({ children }) {
