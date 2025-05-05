@@ -2,4 +2,4 @@ pymongo
 scikit-learn
 joblib
 Fastapi
-uviocrn
+uvicorn
