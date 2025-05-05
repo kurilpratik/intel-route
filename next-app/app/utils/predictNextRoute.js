@@ -1,6 +1,11 @@
 const predictNextRoute = async (routes) => {
+  // Set CORS headers
+  const domain =
+    process.env.NODE_ENV === "production"
+      ? "https://intel-route.onrender.com/"
+      : "http://localhost:8000/";
   try {
-    const res = await fetch("http://localhost:8000/predict", {
+    const res = await fetch(`${domain}predict`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
