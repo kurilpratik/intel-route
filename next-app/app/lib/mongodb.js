@@ -32,9 +32,15 @@ async function dbConnect() {
         return mongoose;
       });
   }
-  cached.conn = await cached.promise;
-  console.log(`MongoDB connected: ${cached.conn}`);
-  return cached.conn;
+  try {
+    cached.conn = await cached.promise;
+    console.log(`MongoDB connected: ${cached.conn}`);
+    return cached.conn;
+  } catch (error) {
+    console.error("MongoDB connection error:", error);
+    cached.promise = null; // Reset the promise in case of failure
+    throw error;
+  }
 }
 
 export default dbConnect;

@@ -1,5 +1,5 @@
 import dbConnect from "@/app/lib/mongodb";
-import Visit from "@/app/models/vist.model";
+import Visit from "@/app/models/visit.model";
 
 export async function POST(req) {
   const { sessionId, path } = await req.json();
