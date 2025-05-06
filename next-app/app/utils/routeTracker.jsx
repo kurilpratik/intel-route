@@ -30,7 +30,7 @@ export default function RouteTracker({
 
     const logRouteVisit = async () => {
       try {
-        await fetch("/api/log-route", {
+        await fetch(`${process.env.NEXT_PUBLIC_FRONTEND_URL}api/log-route`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ sessionId, path: pathname }),
