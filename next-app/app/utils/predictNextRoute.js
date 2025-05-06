@@ -1,6 +1,6 @@
 const predictNextRoute = async (routes) => {
   // Set CORS headers
-  const domain = process.env.BACKEND_BASE_URL;
+  const domain = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
   try {
     const res = await fetch(`${domain}predict`, {
       method: "POST",
