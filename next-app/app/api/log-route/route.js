@@ -1,5 +1,6 @@
 import dbConnect from "@/app/lib/mongodb";
 import Visit from "@/app/models/visit.model";
+import { NextResponse } from "next/server";
 
 export async function POST(req) {
   const { sessionId, path } = await req.json();
