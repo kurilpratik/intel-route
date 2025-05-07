@@ -1,3 +1,5 @@
+import LinkBtn from "../components/LinkBtn";
+
 export default function About() {
   return (
     <section>
@@ -67,6 +69,10 @@ export default function About() {
         This is done to improve the accuracy of the predictions based on new
         data. The retrain button is available in the sidebar of the app. <br />
       </p>
+      <LinkBtn route="/contact" />
+      <br />
+      <br />
+      <br />
     </section>
   );
 }

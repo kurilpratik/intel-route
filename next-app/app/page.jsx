@@ -1,3 +1,5 @@
+import LinkBtn from "./components/LinkBtn";
+
 export default function Home() {
   return (
     <div>
@@ -34,6 +36,10 @@ export default function Home() {
           applications which stores the user session and route visits to a
           MongoDb database and calls the backend APi to get the next predicted
           route and prefetch it in the background. <br />
+          <span className="italic inline-block pt-2">
+            Tech Stack - Nextjs, Tailwind, Mongoose{" "}
+          </span>
+          <br />
           <br />
           <span className="font-bold">2. Python Backend</span> - This includes
           the machine learning model which is trained on the user route visit
@@ -41,11 +47,15 @@ export default function Home() {
           previous routes. This also has a FastAPI endpoint to serve the
           predicted route to the Nextjs application.
           <br />
-          <br />
-          <br />
+          <span className="italic inline-block pt-2">
+            Tech Stack - FastAPI, pymongo, uvicorn, Numpy, ScikitLearn{" "}
+          </span>
           <br />
         </p>
+        <LinkBtn route="/about" />
       </main>
+      <br />
+      <br />
     </div>
   );
 }

@@ -1,3 +1,5 @@
+import LinkBtn from "../components/LinkBtn";
+
 export default function Contact() {
   return (
     <section>
@@ -12,11 +14,12 @@ export default function Contact() {
       </p>
       <br />
       Following are my social media handles:
-      <div className="links text-blue-500 font-semibold hover:text-blue-600 flex flex-col gap-2 mt-4 ml-2">
+      <div className="links text-emerald-500 font-semibold flex flex-col gap-2 mt-4 ml-2">
         <a
           href="https://pratikkuril.xyz"
           target="_blank"
           rel="noopener noreferrer"
+          className="hover:text-emerald-600 "
         >
           My Portfolio 🔗
         </a>
@@ -24,6 +27,7 @@ export default function Contact() {
           href="https://www.linkedin.com/in/kurilpratik/"
           target="_blank"
           rel="noopener noreferrer"
+          className="hover:text-emerald-600 "
         >
           Linkedin 🔗
         </a>
@@ -31,6 +35,7 @@ export default function Contact() {
           href="https://www.behance.net/pratikkuril"
           target="_blank"
           rel="noopener noreferrer"
+          className="hover:text-emerald-600 "
         >
           Behance 🔗
         </a>
@@ -38,10 +43,14 @@ export default function Contact() {
           href="https://www.x.com/kurilpratik"
           target="_blank"
           rel="noopener noreferrer"
+          className="hover:text-emerald-600 "
         >
           X (Twitter) 🔗
         </a>
       </div>
+      <br />
+      <br />
+      <LinkBtn route="/" />
     </section>
   );
 }
