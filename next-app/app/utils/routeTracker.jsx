@@ -8,15 +8,10 @@ import predictNextRoute from "./predictNextRoute";
 
 let routeHistory = [];
 
-export default function RouteTracker({
-  onNextRoute,
-  onPathNameChange,
-  onSessionId,
-}) {
+export default function RouteTracker({ onNextRoute, onPathNameChange }) {
   const pathname = usePathname();
   const router = useRouter();
   const [nextRoute, setNextRoute] = useState(null);
-  const [pathName, setPathName] = useState(pathname);
 
   useEffect(() => {
     // Notify parent about the current pathName
@@ -53,6 +48,13 @@ export default function RouteTracker({
         predictNextRoute(routeHistory).then((nextRoute) => {
           // If nextRoute is predicted, prefetch it
           if (nextRoute) {
+            // Temp solution to fix predicting the same route
+            if (nextRoute === pathname) {
+              console.log("Next route is the same as current route:");
+              //console.log(routeHistory[routeHistory.length - 2]);
+              nextRoute = routeHistory[routeHistory.length - 2];
+            }
+
             router.prefetch(nextRoute);
             console.log("Prefetching next route:", nextRoute);
             setNextRoute(nextRoute);
