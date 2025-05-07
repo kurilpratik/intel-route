@@ -27,14 +27,20 @@ const Sidebar = ({ className }) => {
       <h3 className="text-gray-600 mt-8">
         Next Predicted Route: <br />
       </h3>
-      {!nextRoute && (
+      {!nextRoute ? (
         <p className="text-blue-500 text-sm mt-2 w-[50%]">
           Need at least 2 route changes to predict next route, navigate to
           another page
         </p>
+      ) : (
+        <div>
+          <span className="font-bold">{nextRoute}</span>
+          <br />
+          <p className="mt-4 bg-green-100 text-green-800 inline-block p-2 rounded">
+            {nextRoute} was loaded in the background!
+          </p>
+        </div>
       )}
-      <span className="font-bold">{nextRoute}</span>
-
       <div className="absolute bottom-4 w-[35%]">
         <p className="text-sm text-gray-500 mt-2 mb-4">
           Retrain the model again based on new data to get better and more
