@@ -1,29 +1,51 @@
-###
+# Intel Route - Intelligent Route PRediction and Prefetching
 
-train.py:
+Intel Route is an intelligent web routes prediction system. It uses a machine learning model trained on the user's activity to predict the route the user is most likey to hit next and loads it in the background to improve website performance and speed.
 
-Connects to MongoDB
+### Tech Stack
 
-Builds 3‑gram samples
+Web App - Nextjs, TailwindCSS, Mongoose
+Database - MongoDb
+Backend - FastAPI, pymongo, uvicorn
+Machine Learning - NumPy, ScikitLearn
+Hosting - AWS Amplify (Web App), Atlas (Database), Render (Backend)
 
-Trains a multinomial Logistic Regression
+### Setting Up
 
-Saves model.joblib & encoder.joblib
+```bash
+git clone https://github.com/kurilpratik/intel-route.git
+```
 
-model.py:
+**Frontend** <br>
+Add .env.local inside next-app <br>
 
-Loads the saved model & encoder
+```bash
+.env.local
+MONGODB_URI=your-mongodb-uri
+NEXT_PUBLIC_BACKEND_BASE_URL=http://localhost:8000/
+NEXT_PUBLIC_FRONTEND_URL=
+```
 
-Exposes predict_next_route() that maps a list of two routes → next route
+<br>
 
-app.py:
+```bash
+cd next-app
+npm install
+npm run dev
+```
 
-FastAPI server with a POST /predict endpoint
+<br><br>
+**Backend** <br>
+Add .env inside py-backend <br>
 
-Validates input length (2 routes)
+```bash
+.env
+MONGO_URI=your-mongodb-uri
+BACKEND_DEV_DOMAIN=http://localhost:3000
+```
 
-Returns JSON { predicted: "/contact" }
-
-### Deployment
-
-FastAPI Backend (ML Model) -> Elastic Beanstalk, easiest to deploy Python apps (auto-provision EC2, load balancer, etc.)
+```bash
+cd py-backend
+venv/Scripts/activate
+python app.py
+```
