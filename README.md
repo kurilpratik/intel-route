@@ -1,8 +1,8 @@
-# Intel Route - Intelligent Route PRediction and Prefetching
+# Intel Route - Intelligent Route Prediction and Prefetching using ML
 
 Intel Route is an intelligent web routes prediction system. It uses a machine learning model trained on the user's activity to predict the route the user is most likey to hit next and loads it in the background to improve website performance and speed.
 
-### Tech Stack
+## Tech Stack
 
 Web App - Nextjs, TailwindCSS, Mongoose
 Database - MongoDb
@@ -10,7 +10,7 @@ Backend - FastAPI, pymongo, uvicorn
 Machine Learning - NumPy, ScikitLearn
 Hosting - AWS Amplify (Web App), Atlas (Database), Render (Backend)
 
-### Setting Up
+## Setting Up
 
 ```bash
 git clone https://github.com/kurilpratik/intel-route.git
@@ -34,7 +34,8 @@ npm install
 npm run dev
 ```
 
-<br><br>
+<br>
+
 **Backend** <br>
 Add .env inside py-backend <br>
 
