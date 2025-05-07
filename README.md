@@ -1,4 +1,4 @@
-# Intel Route - Intelligent Route Prediction and Prefetching using ML
+## Intel Route - Intelligent Route Prediction and Prefetching using ML
 
 Intel Route is an intelligent web routes prediction system. It uses a machine learning model trained on the user's activity to predict the route the user is most likey to hit next and loads it in the background to improve website performance and speed.
 
