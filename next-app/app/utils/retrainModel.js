@@ -5,8 +5,10 @@ const retrainModel = async () => {
     });
     if (!res.ok) throw new Error("Retrain API failed");
     else {
-      console.log("Model retrained successfully");
-      return res.ok;
+      const data = await res.json();
+      console.log("Retrain API response:", data);
+      console.log("Model retrained successfully - retrainModel.js");
+      return data;
     }
   } catch (error) {
     console.error("Error retraining model:", error);

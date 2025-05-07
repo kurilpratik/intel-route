@@ -26,6 +26,9 @@ class PredictRequest(BaseModel):
 class PredictResponse(BaseModel):
     predicted: str
 
+class RetrainResponse(BaseModel):
+    retrained: bool
+
 @app.post("/predict", response_model=PredictResponse)
 def predict(req: PredictRequest):
     # Validate imput length matches model training (N-1)
@@ -41,7 +44,7 @@ def predict(req: PredictRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.post("/retrain")
+@app.post("/retrain", response_model=RetrainResponse)
 def retrain(background_tasks: BackgroundTasks):
     """
     Endpoint to retrain the model in the background.
@@ -49,7 +52,8 @@ def retrain(background_tasks: BackgroundTasks):
     from train import train
     # Call the retrain function in the background
     background_tasks.add_task(train)
-    return {"message": "Model retraining started."}
+    print("Model retraining started.")
+    return RetrainResponse(retrained=True)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0",port=8000)
