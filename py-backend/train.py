@@ -82,6 +82,7 @@ def train():
     joblib.dump(model, MODEL_PATH)
     joblib.dump(encoder, ENCODER_PATH)
     print(f"Model and encoder saved to {MODEL_PATH} and {ENCODER_PATH}.")
+    print("Model training complete.")
 
 if __name__ == "__main__":
     train()

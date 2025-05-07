@@ -37,5 +37,3 @@ def predict_next_route(previous_routes: list[str]) -> str:
     # Map back to route string
     print(f"Predicted route: {idx_to_route[pred_idx]}")
     return idx_to_route[pred_idx]
-
-predict_next_route(["/", "/about"])
